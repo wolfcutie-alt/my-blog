@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Layout from '../components/layout'
+import Seo from '../components/seo'
 
 const FoodPage = () => {
   return (
@@ -9,6 +10,6 @@ const FoodPage = () => {
   )
 }
 
-export const Head = () => <title>Food Me</title>
+export const Head = () => <Seo title="Food Page"/>
 
 export default FoodPage
