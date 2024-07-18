@@ -2,20 +2,19 @@ import * as React from 'react'
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
 import { graphql } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
-const BlogPost = ({ data, children }) => {
-  const image = getImage(data.mdx.frontmatter.hero_image)
+const BlogPost = ({ data }) => {
+  const { mdx } = data
+  const { frontmatter, body } = mdx
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
-      <p>{data.mdx.frontmatter.date}</p>
-      <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt} />
-      <p>Photo Credit:{" "}
-        <a href={data.mdx.frontmatter.hero_image_credit_link}>
-          {data.mdx.frontmatter.hero_image_credit_text}
-        </a>
-      </p>
-      {children}
+    <Layout>
+      <div className='container mx-auto px-4 py-8'>
+        <article className='prose lg:prose-xl'>
+          <h1 className='text-4xl font-bold mb-4'>{frontmatter.title}</h1>
+          <p className='text-gray-600 mb-8'>{frontmatter.date}</p>
+          {body}
+        </article>
+      </div>
     </Layout>
   )
 }
@@ -26,19 +25,12 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        hero_image_alt
-        hero_image_credit_link
-        hero_image_credit_text
-        hero_image {
-          childImageSharp {
-            gatsbyImageData
-          }
-        }
       }
+      body
     }
   }
 `
 
-export const Head = () => <Seo title="Super Cool Blog Posts" />
+export const Head = () => <Seo title=" Blog Post" />
 
 export default BlogPost
