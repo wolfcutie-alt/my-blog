@@ -18,6 +18,7 @@ const BlogPage = ({ data }) => {
                   <h2 className='text-2xl font-semi bold text-blue-500 hover:underline'>{post.frontmatter.title}</h2>
                 </Link>
               <p className='text-gray-600'>Posted: {post.frontmatter.date}</p>
+              <p>{post.excerpt}</p>
           </li>
         ))
       }
@@ -37,6 +38,7 @@ export const query = graphql`
           date(formatString: "MMMM DD, YYYY")
           slug
         }
+        excerpt
       }
     }
   }

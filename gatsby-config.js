@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: "My Blog",
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://main--kayla-story.netlify.app/`,
   },
   plugins: [
     "gatsby-plugin-image",
