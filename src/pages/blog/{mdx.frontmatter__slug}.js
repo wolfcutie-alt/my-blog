@@ -2,6 +2,7 @@ import * as React from 'react'
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
 import { graphql } from 'gatsby'
+import "../../styles/global.css"
 
 const BlogPost = ({ data }) => {
   const { mdx } = data
